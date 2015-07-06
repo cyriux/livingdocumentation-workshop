@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Living Diagram</title>
+  </head>
+  <body>
+    
+    <script type="text/vnd.graphviz" id="custom">
+# Class diagram Hexagonal Architecture
+digraph G {
+	graph [labelloc=top,label="Hexagonal Architecture",fontname="Verdana",fontsize=12,rankdir=LR];
+	edge [fontname="Verdana",fontsize=9,labelfontname="Verdana",labelfontsize=9];
+	node [fontname="Verdana",fontsize=9,shape=record];
+subgraph cluster_c0 {
+label = "Core Domain";
+//Basket
+	c1 [label="Basket"]
+//GeoDistance
+	c10 [label="GeoDistance"]
+//Geocoding
+	c11 [label="Geocoding"]
+//Merchant
+	c12 [label="Merchant"]
+//Money
+	c13 [label="Money"]
+//Vehicle
+	c14 [label="Vehicle"]
+//VolumeUnit
+	c15 [label="VolumeUnit"]
+//package-info
+	c16 [label="package-info"]
+//Coordinates
+	c2 [label="Coordinates"]
+//DistanceUnit
+	c3 [label="DistanceUnit"]
+//FuelCardMonitoring
+	c4 [label="FuelCardMonitoring"]
+//FuelCardTransaction
+	c5 [label="FuelCardTransaction"]
+//FuelCardTransactionReport
+	c6 [label="FuelCardTransactionReport"]
+//FuelEconomy
+	c7 [label="FuelEconomy"]
+//FueldCard
+	c8 [label="FueldCard"]
+//GPSTrackingGateway
+	c9 [label="GPSTrackingGateway"]
+}
+//FuelCardTxListener
+	c17 [label="FuelCardTxListener"]
+//ReportDAO
+	c18 [label="ReportDAO"]
+//SmartGISGeoCodingAdapter
+	c19 [label="SmartGISGeoCodingAdapter"]
+//WebServiceGPSTrackingAdapter
+	c20 [label="WebServiceGPSTrackingAdapter"]
+//FuelCardResource
+	c21 [label="FuelCardResource"]
+//ReportResource
+	c22 [label="ReportResource"]
+//package-info
+	c23 [label="package-info"]
+//VehicleDatastore
+	c24 [label="VehicleDatastore"]
+//package-info
+	c25 [label="package-info"]
+//FuelCardJMXBean
+	c26 [label="FuelCardJMXBean"]
+//package-info
+	c27 [label="package-info"]
+//package-info
+	c28 [label="package-info"]
+	// null
+	c26 -> c26 [arrowhead=open];
+	// null
+	c3 -> c3 [arrowhead=open];
+	// null
+	c7 -> c7 [arrowhead=open];
+	// null
+	c10 -> c10 [arrowhead=open];
+	// null
+	c13 -> c13 [arrowhead=open];
+	// null
+	c15 -> c15 [arrowhead=open];
+	// null
+	c6 -> c5 [arrowhead=open];
+	// null
+	c17 -> c18 [arrowhead=open];
+	// null
+	c4 -> c9 [arrowhead=open];
+	// null
+	c5 -> c8 [arrowhead=open];
+	// null
+	c11 -> c19 [dir=back,arrowtail=empty,style=dashed];
+	// null
+	c22 -> c18 [arrowhead=open];
+	// null
+	c1 -> c13 [arrowhead=open];
+	// null
+	c17 -> c24 [arrowhead=open];
+	// null
+	c21 -> c4 [arrowhead=open];
+	// null
+	c4 -> c11 [arrowhead=open];
+	// null
+	c7 -> c20 [arrowhead=open];
+	// null
+	c9 -> c20 [dir=back,arrowtail=empty,style=dashed];
+	// null
+	c5 -> c13 [arrowhead=open];
+	// null
+	c5 -> c12 [arrowhead=open];
+	// null
+	c17 -> c4 [arrowhead=open];
+	// null
+	c5 -> c1 [arrowhead=open];
+}
+	</script>
+    <script src="lib/viz.js"></script>
+    <script>
+      
+      function inspect(s) {
+        return "<pre>" + s.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;") + "</pre>"
+      }
+      
+      function src(id) {
+        return document.getElementById(id).innerHTML;
+      }
+      
+      function example(id, format, engine) {
+        var result;
+        try {
+          result = Viz(src(id), format, engine);
+          if (format === "svg")
+            return result;
+          else
+            return inspect(result);
+        } catch(e) {
+          return inspect(e.toString());
+        }
+      }
+      
+      document.body.innerHTML += "<h1>Living Diagram</h1>"
+      document.body.innerHTML += example("custom", "svg");
+    </script>    
+</body></html>

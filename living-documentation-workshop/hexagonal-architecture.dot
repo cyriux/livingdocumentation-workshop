@@ -1,0 +1,83 @@
+# Class diagram Hexagonal Architecture
+digraph G {
+	graph [labelloc=top,label="Hexagonal Architecture",fontname="Verdana",fontsize=12,rankdir=LR];
+	edge [fontname="Verdana",fontsize=9,labelfontname="Verdana",labelfontsize=9];
+	node [fontname="Verdana",fontsize=9,shape=record];
+subgraph cluster_c0 {
+label = "Core Domain";
+//Basket
+	c1 [label="Basket"]
+//GeoDistance
+	c10 [label="GeoDistance"]
+//Geocoding
+	c11 [label="Geocoding"]
+//Merchant
+	c12 [label="Merchant"]
+//Money
+	c13 [label="Money"]
+//Vehicle
+	c14 [label="Vehicle"]
+//VolumeUnit
+	c15 [label="VolumeUnit"]
+//package-info
+	c16 [label="package-info"]
+//Coordinates
+	c2 [label="Coordinates"]
+//DistanceUnit
+	c3 [label="DistanceUnit"]
+//FuelCardMonitoring
+	c4 [label="FuelCardMonitoring"]
+//FuelCardTransaction
+	c5 [label="FuelCardTransaction"]
+//FuelCardTransactionReport
+	c6 [label="FuelCardTransactionReport"]
+//FuelEconomy
+	c7 [label="FuelEconomy"]
+//FueldCard
+	c8 [label="FueldCard"]
+//GPSTracking
+	c9 [label="GPSTracking"]
+}
+//FuelCardTxListener
+	c17 [label="FuelCardTxListener"]
+//SmartGISGeoCodingAdapter
+	c18 [label="SmartGISGeoCodingAdapter"]
+//VehicleAssignmentEJB
+	c19 [label="VehicleAssignmentEJB"]
+//WebServiceGPSTrackingAdapter
+	c20 [label="WebServiceGPSTrackingAdapter"]
+	// null
+	c3 -> c3 [arrowhead=open];
+	// null
+	c7 -> c7 [arrowhead=open];
+	// null
+	c10 -> c10 [arrowhead=open];
+	// null
+	c13 -> c13 [arrowhead=open];
+	// null
+	c15 -> c15 [arrowhead=open];
+	// null
+	c6 -> c5 [arrowhead=open];
+	// null
+	c17 -> c19 [arrowhead=open];
+	// null
+	c4 -> c9 [arrowhead=open];
+	// null
+	c5 -> c8 [arrowhead=open];
+	// null
+	c11 -> c18 [dir=back,arrowtail=empty,style=dashed];
+	// null
+	c1 -> c13 [arrowhead=open];
+	// null
+	c4 -> c11 [arrowhead=open];
+	// null
+	c9 -> c20 [dir=back,arrowtail=empty,style=dashed];
+	// null
+	c5 -> c13 [arrowhead=open];
+	// null
+	c5 -> c12 [arrowhead=open];
+	// null
+	c17 -> c4 [arrowhead=open];
+	// null
+	c5 -> c1 [arrowhead=open];
+}

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>System Diagram</title>
+  </head>
+  <body>
+    
+    <script type="text/vnd.graphviz" id="custom">
+# Class diagram System Diagram
+digraph G {
+	graph [labelloc=top,label="System Diagram",fontname="Verdana",fontsize=12,rankdir=LR];
+	edge [fontname="Verdana",fontsize=9,labelfontname="Verdana",labelfontsize=9];
+	node [fontname="Verdana",fontsize=9,shape=record];
+//the system under consideration
+	c0 [label="Fuel Card Monitoring
+\lfuelcard.png\n \<\<System\>\>"]
+//FuelCardTxListener
+	c1 [label="Fuelo Card API\n \<\<External\l Actor\>\>"]
+//SmartGISGeoCodingAdapter
+	c2 [label="Google Geocoding\n \<\<External\l Actor\>\>"]
+//WebServiceGPSTrackingAdapter
+	c3 [label="GPS Tracking from Garmin\n\l \<\<External Actor\>\>"]
+//package-info
+	c4 [label="Fleet Management Teams\n\l \<\<External Actor\>\>"]
+//package-info
+	c5 [label="Legacy Vehicle Assignement\n\l \<\<External Actor\>\>"]
+//package-info
+	c6 [label="Support & Monitoring\n\l \<\<External Actor\>\>"]
+	// null
+	c0 -> c2 [arrowhead=none,style=dashed];
+	// null
+	c1 -> c0 [arrowhead=none,style=dashed];
+	// null
+	c4 -> c0 [arrowhead=none,style=dashed];
+	// null
+	c0 -> c3 [arrowhead=none,style=dashed];
+	// null
+	c6 -> c0 [arrowhead=none,style=dashed];
+	// null
+	c5 -> c0 [arrowhead=none,style=dashed];
+}
+	</script>
+    <script src="lib/viz.js"></script>
+    <script>
+      
+      function inspect(s) {
+        return "<pre>" + s.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;") + "</pre>"
+      }
+      
+      function src(id) {
+        return document.getElementById(id).innerHTML;
+      }
+      
+      function example(id, format, engine) {
+        var result;
+        try {
+          result = Viz(src(id), format, engine);
+          if (format === "svg")
+            return result;
+          else
+            return inspect(result);
+        } catch(e) {
+          return inspect(e.toString());
+        }
+      }
+      
+      document.body.innerHTML += "<h1>System Diagram</h1>"
+      document.body.innerHTML += example("custom", "svg");
+    </script>    
+</body></html>

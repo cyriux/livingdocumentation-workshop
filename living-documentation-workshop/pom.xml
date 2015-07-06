@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.martraire.cyrille.flottio</groupId>
+	<artifactId>flottio</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Flottio</name>
+	<description>Advanced Fleet Management system</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>dot-diagram</groupId>
+			<artifactId>dot-diagram</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/dependencies/dot-diagram-1.0.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.qdox</groupId>
+			<artifactId>qdox</artifactId>
+			<version>2.0-M3</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12-beta-3</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,34 @@
+# Glossary
+
+## "Dispatching"
+
+Dispatching is the procedure for assigning employees (drivers) or vehicles to customers requests, e.g. for parcel delivery or couriers.
+
+With vehicle dispatching, requests are matched according to the order of the incoming requests and the proximity of vehicles to the target locations or routes. 
+
+The main stake in dispatching is to increase revenue by fitting more service requests into each workday.
+
+- See: null
+
+
+## "Fuel Card Monitoring"
+
+Fuel Card Monitoring is the analysis of every incoming fuel card transaction in order to detect potential fuel card abnormal behavior by drivers. 
+
+By looking for abuse patterns and by cross-checking facts from various sources, it reports anomalies that are therefore investigated by the fleet management team. 
+
+For example, a client using Fuel Card Monitoring with the GPS fleet-tracking features is able to bust an employee for padding hours, falsifying timesheets, and stealing fuel, or buying non-fuel goods with the fuel card.
+
+- See: null
+
+
+## "Preventative Maintenance"
+
+Preventive maintenance consists of scheduled servicing, inspections, and vehicle repairs to prevent potential problems and maximize vehicle availability. 
+
+Preventive maintenance is used to proactively avoid or reduce vehicle breakdowns and is based on time, mileage, engine hours, or gallons of fuel used. 
+
+Preventive maintenance actions include vehicle inspection, lubrication, adjustment, cleaning, testing, repair, and/or worn parts replacement.
+
+- See: null
+

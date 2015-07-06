@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package flottio.annotations;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+/**
+ * An object that never changes once built. This enables to share it freely
+ * between any processes, threads, and even untrusted code as it can never be
+ * changed.
+ * 
+ * @author Cyrille.Martraire
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented
+public @interface Immutable {
+
+}

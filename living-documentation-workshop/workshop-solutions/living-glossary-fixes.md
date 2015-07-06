@@ -1,0 +1,1 @@
+Remove reference from FuelEconomy to WebServiceGPSTrackingAdapter
