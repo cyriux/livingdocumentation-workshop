@@ -2,6 +2,7 @@ package flottio.fuelcardmonitoring.infra;
 
 import flottio.annotations.ExternalActor;
 import flottio.annotations.ExternalActor.Direction;
+import flottio.annotations.SightSeeingTour;
 import flottio.dispatching.VehicleAssignmentEJB;
 import flottio.fuelcardmonitoring.domain.FuelCardMonitoring;
 import flottio.fuelcardmonitoring.domain.FuelCardTransaction;
@@ -9,7 +10,12 @@ import flottio.fuelcardmonitoring.domain.FuelCardTransactionReport;
 import flottio.fuelcardmonitoring.domain.Vehicle;
 import flottio.fuelcardmonitoring.legacy.VehicleDatastore;
 
+/**
+ * Listens to incoming fuel card transactions from the external system of the
+ * Fuel Card Provider
+ */
 @ExternalActor(name = "Fuelo Card API", direction = Direction.API)
+@SightSeeingTour(name = "Quick Developer Tour", description = "The MQ listener which receives new incoming fuel card transactions", rank = 6)
 public class FuelCardTxListener {
 
 	private final FuelCardMonitoring monitoring;

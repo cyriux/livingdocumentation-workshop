@@ -3,6 +3,7 @@ package flottio.fuelcardmonitoring.domain;
 import java.util.Date;
 
 import flottio.annotations.CoreConcept;
+import flottio.annotations.SightSeeingTour;
 import flottio.annotations.ValueObject;
 
 /**
@@ -11,6 +12,7 @@ import flottio.annotations.ValueObject;
  */
 @ValueObject
 @CoreConcept
+@SightSeeingTour(name = "Quick Developer Tour", description = "The incoming fuel card transaction", rank = 3)
 public class FuelCardTransaction {
 
 	private final Date date;

@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import flottio.annotations.CoreConcept;
+import flottio.annotations.SightSeeingTour;
 import flottio.annotations.ValueObject;
 
 /**
@@ -15,6 +16,7 @@ import flottio.annotations.ValueObject;
  */
 @ValueObject
 @CoreConcept
+@SightSeeingTour(name = "Quick Developer Tour", description = "The report for an incoming fuel card transaction", rank = 4)
 public class FuelCardTransactionReport {
 
 	/**

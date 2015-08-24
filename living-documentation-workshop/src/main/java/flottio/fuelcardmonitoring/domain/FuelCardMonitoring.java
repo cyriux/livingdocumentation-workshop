@@ -11,13 +11,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import flottio.annotations.DomainService;
+import flottio.annotations.SightSeeingTour;
 import flottio.fuelcardmonitoring.domain.FuelCardTransactionReport.MonitoringStatus;
 
 /**
- * Monitoring of fuel card use helps improve fuel efficiency and detect fuel
+ * Monitoring of fuel card use to help improve fuel efficiency and detect fuel
  * leakages and potential driver misbehaviors.
  */
 @DomainService
+@SightSeeingTour(name = "Quick Developer Tour", description = "The service which takes care of all the fuel card monitoring", rank = 1)
 public class FuelCardMonitoring {
 
 	// The LocationTrackingService instance
@@ -32,7 +34,7 @@ public class FuelCardMonitoring {
 		this.geocoding = geocoding;
 	}
 
-	// This public method does the job
+	@SightSeeingTour(name = "Quick Developer Tour", description = "The method which does all the potential fraud detection for an incoming fuel card transaction", rank = 2)
 	public FuelCardTransactionReport monitor(FuelCardTransaction transaction, Vehicle vehicle) {
 		final Coordinates actualLocation = tracking.locationAt(String.valueOf(vehicle.getVehicleId()),
 				transaction.getDate());

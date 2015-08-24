@@ -22,4 +22,17 @@ public class GeoDistanceTest {
 	public void distance_4km2_between_centre_pompidou_and_Eiffel_Tower() throws Exception {
 		assertEquals(4190, GeoDistance.EQUIRECTANGULAR.distanceBetween(CENTRE_POMPIDOU, EIFFEL_TOWER), 10);
 	}
+
+	@Test
+	public void aaa_distance_4km2_between_centre_pompidou_and_Eiffel_Tower() throws Exception {
+		// Arrange
+		final Coordinates centrePompidou = new Coordinates(48.8608333, 2.3516667);
+		final Coordinates eiffelTower = new Coordinates(48.858222, 2.2945);
+
+		// Act
+		final double distance = GeoDistance.EQUIRECTANGULAR.distanceBetween(centrePompidou, eiffelTower);
+
+		// Assert
+		assertEquals(4190, distance, 10);
+	}
 }

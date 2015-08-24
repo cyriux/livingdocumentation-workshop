@@ -8,9 +8,9 @@
   <body>
     
     <script type="text/vnd.graphviz" id="custom">
-# Class diagram System Diagram
+# Class diagram 
 digraph G {
-	graph [labelloc=top,label="System Diagram",fontname="Verdana",fontsize=12,rankdir=LR];
+	graph [labelloc=top,label="",fontname="Verdana",fontsize=12,rankdir=LR];
 	edge [fontname="Verdana",fontsize=9,labelfontname="Verdana",labelfontsize=9];
 	node [fontname="Verdana",fontsize=9,shape=record];
 //the system under consideration
@@ -21,25 +21,38 @@ digraph G {
 //SmartGISGeoCodingAdapter
 	c2 [label="Google Geocoding\n \<\<External\l Actor\>\>"]
 //WebServiceGPSTrackingAdapter
-	c3 [label="GPS Tracking from Garmin\n\l \<\<External Actor\>\>"]
+	c3 [label="GPS Tracking from
+Garmin\n\l \<\<External Actor\>\>"]
 //package-info
-	c4 [label="Fleet Management Teams\n\l \<\<External Actor\>\>"]
+	c4 [label="Fleet Management
+Teams\n\l \<\<External Actor\>\>"]
 //package-info
-	c5 [label="Legacy Vehicle Assignement\n\l \<\<External Actor\>\>"]
+	c5 [label="Legacy Vehicle
+Assignement\n\l \<\<External Actor\>\>"]
 //package-info
 	c6 [label="Support & Monitoring\n\l \<\<External Actor\>\>"]
 	// null
 	c0 -> c2 [arrowhead=none,style=dashed];
 	// null
-	c1 -> c0 [arrowhead=none,style=dashed];
+	c1 -> c0 [label="Listens to incoming fuel card
+transactions from the
+external system of the
+Fuel
+Card Provider"  , arrowhead=none,style=dashed];
 	// null
-	c4 -> c0 [arrowhead=none,style=dashed];
+	c4 -> c0 [label="The fleet management team
+investigates any anomaly
+about fuel cards"  , arrowhead=none,style=dashed];
 	// null
 	c0 -> c3 [arrowhead=none,style=dashed];
 	// null
 	c6 -> c0 [arrowhead=none,style=dashed];
 	// null
-	c5 -> c0 [arrowhead=none,style=dashed];
+	c0 -> c5 [label="Vehicle Management is a legacy
+system which manages which
+drivers is associated to a
+vehicle for a period of time
+."  , arrowhead=none,style=dashed];
 }
 	</script>
     <script src="lib/viz.js"></script>

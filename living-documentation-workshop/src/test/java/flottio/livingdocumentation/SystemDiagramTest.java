@@ -5,6 +5,7 @@ import static flottio.livingdocumentation.SimpleTemplate.readTestResource;
 import static flottio.livingdocumentation.SimpleTemplate.write;
 import static org.livingdocumentation.dotdiagram.DotStyles.NOTE_EDGE_STYLE;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -18,6 +19,8 @@ import org.livingdocumentation.dotdiagram.DotGraph.Digraph;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
+import com.thoughtworks.qdox.JavaProjectBuilder;
+import com.thoughtworks.qdox.model.JavaAnnotatedElement;
 
 import flottio.annotations.BoundedContext;
 import flottio.annotations.ExternalActor;
@@ -28,11 +31,15 @@ import flottio.annotations.ExternalActor;
  */
 public class SystemDiagramTest {
 
-	private final DotGraph graph = new DotGraph("System Diagram", "LR");
+	private final DotGraph graph = new DotGraph("", "LR");
 
 	@Test
 	public void generateDiagram() throws Exception {
 		final ClassPath classPath = ClassPath.from(Thread.currentThread().getContextClassLoader());
+
+		final JavaProjectBuilder builder = new JavaProjectBuilder();
+		// Adding all .java files in a source tree (recursively).
+		builder.addSourceTree(new File("src/main/java"));
 
 		final String prefix = "flottio.fuelcardmonitoring";
 		final ImmutableSet<ClassInfo> allClasses = classPath.getTopLevelClassesRecursive(prefix);
@@ -61,7 +68,7 @@ public class SystemDiagramTest {
 			final Stream<ClassInfo> infra = allClasses.stream().filter(notIn("domain"));
 			infra.forEach(new Consumer<ClassInfo>() {
 				public void accept(ClassInfo ci) {
-					printActor(digraph, ci);
+					printActor(digraph, ci, builder);
 				}
 			});
 		}
@@ -93,23 +100,41 @@ public class SystemDiagramTest {
 		return first;
 	}
 
-	protected void printActor(Digraph digraph, ClassInfo ci) {
+	private final static String wrap(String words, final int length) {
+		final StringBuilder sb = new StringBuilder(words);
+		int i = 0;
+		while (i + length < sb.length() && (i = sb.lastIndexOf(" ", i + length)) != -1) {
+			sb.replace(i, i + 1, "\n");
+		}
+		return sb.toString();
+	}
+
+	protected void printActor(Digraph digraph, ClassInfo ci, JavaProjectBuilder builder) {
 		final ExternalActor[] actors = ci.load().getAnnotationsByType(ExternalActor.class);
 		for (ExternalActor actor : actors) {
-			digraph.addNode(ci.getName()).setLabel(actor.name()).setComment(ci.getSimpleName())
+			digraph.addNode(ci.getName()).setLabel(wrap(actor.name(), 20)).setComment(ci.getSimpleName())
 					.addStereotype("External Actor");
+
+			final String label = getComment(ci, builder);
 			switch (actor.direction()) {
 			case API:
-				digraph.addAssociation(ci.getName(), "system").setLabel("").setOptions(NOTE_EDGE_STYLE);
+				digraph.addAssociation(ci.getName(), "system").setLabel(label).setOptions(NOTE_EDGE_STYLE);
 				break;
 			case SPI:
-				digraph.addAssociation("system", ci.getName()).setLabel("").setOptions(NOTE_EDGE_STYLE);
+				digraph.addAssociation("system", ci.getName()).setLabel(label).setOptions(NOTE_EDGE_STYLE);
 				break;
 			default:
-				digraph.addAssociation("system", ci.getName()).setLabel("").setOptions(NOTE_EDGE_STYLE);
-				digraph.addAssociation(ci.getName(), "system").setLabel("").setOptions(NOTE_EDGE_STYLE);
+				digraph.addAssociation("system", ci.getName()).setLabel(label).setOptions(NOTE_EDGE_STYLE);
+				digraph.addAssociation(ci.getName(), "system").setLabel(label).setOptions(NOTE_EDGE_STYLE);
 			}
 		}
+	}
+
+	private String getComment(ClassInfo ci, JavaProjectBuilder builder) {
+		JavaAnnotatedElement doc = ci.getSimpleName().equals("package-info") ? builder.getPackageByName(ci
+				.getPackageName()) : builder.getClassByName(ci.getName());
+		final String label = doc.getComment() == null ? "" : wrap(doc.getComment(), 30);
+		return label;
 	}
 
 	private Predicate<ClassInfo> notIn(final String packageName) {
