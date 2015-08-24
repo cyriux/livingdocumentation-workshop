@@ -19,7 +19,7 @@ import flottio.fuelcardmonitoring.domain.FuelCardTransactionReport.MonitoringSta
  * leakages and potential driver misbehaviors.
  */
 @DomainService
-@SightSeeingTour(name = "Quick Developer Tour", description = "The service which takes care of all the fuel card monitoring", rank = 1)
+@SightSeeingTour(name = "Quick Developer Tour", description = "The service which takes care of all the fuel card monitoring", rank = 3)
 public class FuelCardMonitoring {
 
 	// The LocationTrackingService instance
@@ -34,7 +34,7 @@ public class FuelCardMonitoring {
 		this.geocoding = geocoding;
 	}
 
-	@SightSeeingTour(name = "Quick Developer Tour", description = "The method which does all the potential fraud detection for an incoming fuel card transaction", rank = 2)
+	@SightSeeingTour(name = "Quick Developer Tour", description = "The method which does all the potential fraud detection for an incoming fuel card transaction", rank = 4)
 	public FuelCardTransactionReport monitor(FuelCardTransaction transaction, Vehicle vehicle) {
 		final Coordinates actualLocation = tracking.locationAt(String.valueOf(vehicle.getVehicleId()),
 				transaction.getDate());

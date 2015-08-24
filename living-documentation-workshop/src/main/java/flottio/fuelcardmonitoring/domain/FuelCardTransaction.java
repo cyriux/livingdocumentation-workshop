@@ -12,7 +12,7 @@ import flottio.annotations.ValueObject;
  */
 @ValueObject
 @CoreConcept
-@SightSeeingTour(name = "Quick Developer Tour", description = "The incoming fuel card transaction", rank = 3)
+@SightSeeingTour(name = "Quick Developer Tour", description = "The incoming fuel card transaction", rank = 2)
 public class FuelCardTransaction {
 
 	private final Date date;

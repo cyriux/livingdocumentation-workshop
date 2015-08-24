@@ -15,7 +15,7 @@ import flottio.fuelcardmonitoring.legacy.VehicleDatastore;
  * Fuel Card Provider
  */
 @ExternalActor(name = "Fuelo Card API", direction = Direction.API)
-@SightSeeingTour(name = "Quick Developer Tour", description = "The MQ listener which receives new incoming fuel card transactions", rank = 6)
+@SightSeeingTour(name = "Quick Developer Tour", description = "The MQ listener which receives new incoming fuel card transactions", rank = 1)
 public class FuelCardTxListener {
 
 	private final FuelCardMonitoring monitoring;

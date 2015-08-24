@@ -16,7 +16,7 @@ import flottio.annotations.ValueObject;
  */
 @ValueObject
 @CoreConcept
-@SightSeeingTour(name = "Quick Developer Tour", description = "The report for an incoming fuel card transaction", rank = 4)
+@SightSeeingTour(name = "Quick Developer Tour", description = "The report for an incoming fuel card transaction", rank = 5)
 public class FuelCardTransactionReport {
 
 	/**
