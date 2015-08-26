@@ -8,7 +8,29 @@
 
 
 
-## 1. [FuelCardMonitoring](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardMonitoring.java#L21)
+## 1. [FuelCardTxListener](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/FuelCardTxListener.java#L17)
+
+*The MQ listener which triggers a full chain of processing*
+
+> Listens to incoming fuel card transactions from the external system of the
+> Fuel Card Provider
+
+
+
+
+
+## 2. [FuelCardTransaction](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardTransaction.java#L13)
+
+*The incoming fuel card transaction*
+
+> A transaction between a card and a merchant as reported by the fuel card
+> provider
+
+
+
+
+
+## 3. [FuelCardMonitoring](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardMonitoring.java#L21)
 
 *The service which takes care of all the fuel card monitoring*
 
@@ -19,15 +41,15 @@
 
 
 
-## 2. [monitor(transaction, vehicle)](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardMonitoring.java#L38)
+## 4. [monitor(transaction, vehicle)](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardMonitoring.java#L38)
 
 *The method which does all the potential fraud detection for an incoming fuel card transaction*
 
 
 ```
-@flottio.annotations.SightSeeingTour(name="Quick Developer Tour",
+@flottio.annotations.GuidedTour(name="Quick Developer Tour",
 	description="The method which does all the potential fraud detection for an incoming fuel card transaction",
-	rank=2)
+	rank=4)
 public flottio.fuelcardmonitoring.domain.FuelCardTransactionReport monitor(flottio.fuelcardmonitoring.domain.FuelCardTransaction transaction, flottio.fuelcardmonitoring.domain.Vehicle vehicle) {
 
 		final Coordinates actualLocation = tracking.locationAt(String.valueOf(vehicle.getVehicleId()),
@@ -80,18 +102,7 @@ public flottio.fuelcardmonitoring.domain.FuelCardTransactionReport monitor(flott
 
 
 
-## 3. [FuelCardTransaction](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardTransaction.java#L13)
-
-*The incoming fuel card transaction*
-
-> A transaction between a card and a merchant as reported by the fuel card
-> provider
-
-
-
-
-
-## 4. [FuelCardTransactionReport](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardTransactionReport.java#L17)
+## 5. [FuelCardTransactionReport](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/domain/FuelCardTransactionReport.java#L17)
 
 *The report for an incoming fuel card transaction*
 
@@ -102,20 +113,9 @@ public flottio.fuelcardmonitoring.domain.FuelCardTransactionReport monitor(flott
 
 
 
-## 5. [FuelCardTxListener](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/FuelCardTxListener.java#L17)
-
-*The MQ listener which receives new incoming fuel card transactions*
-
-> Listens to incoming fuel card transactions from the external system of the
-> Fuel Card Provider
-
-
-
-
-
 ## 6. [ReportDAO](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/ReportDAO.java#L9)
 
-*The DAO to store the fuel card reports for an incoming fuel card transaction*
+*The DAO to store the resulting fuel card reports after processing*
 
 
 

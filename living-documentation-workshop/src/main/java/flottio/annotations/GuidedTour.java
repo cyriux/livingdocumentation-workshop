@@ -10,12 +10,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Marks this element as a site to be part of the sightseeing tour
+ * Marks this element as a site to be part of the guided tour
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target({ ElementType.PACKAGE, ElementType.TYPE, ElementType.METHOD, ElementType.FIELD })
-public @interface SightSeeingTour {
+public @interface GuidedTour {
 
 	String name();
 
