@@ -30,7 +30,7 @@ public class LivingSightseeingTourTest {
 
 	private static final String CONTEXT_PREFIX = "flottio.fuelcardmonitoring";
 
-	private static final String ANNOTATION_NAME = "flottio.annotations.SightSeeingTour";
+	private static final String ANNOTATION_NAME = "flottio.annotations.GuidedTour";
 	private static final String REPO_LINKS_PREFIX = "https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop";
 
 	private PrintWriter writer;
