@@ -21,6 +21,8 @@ public @interface ExternalActor {
 
 	Direction direction();
 
+	ActorType type() default ActorType.PEOPLE;
+
 	String pictureLink() default "";
 
 	String link() default "";
@@ -45,4 +47,10 @@ public @interface ExternalActor {
 		 */
 		API_SPI;
 	}
+
+	public enum ActorType {
+
+		PEOPLE, SYSTEM;
+	}
+
 }

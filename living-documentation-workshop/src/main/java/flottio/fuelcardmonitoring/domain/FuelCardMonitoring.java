@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import flottio.annotations.CoreConcept;
 import flottio.annotations.DomainService;
 import flottio.annotations.GuidedTour;
 import flottio.fuelcardmonitoring.domain.FuelCardTransactionReport.MonitoringStatus;
@@ -19,17 +20,18 @@ import flottio.fuelcardmonitoring.domain.FuelCardTransactionReport.MonitoringSta
  * leakages and potential driver misbehaviors.
  */
 @DomainService
+@CoreConcept
 @GuidedTour(name = "Quick Developer Tour", description = "The service which takes care of all the fuel card monitoring", rank = 3)
 public class FuelCardMonitoring {
 
 	// The LocationTrackingService instance
-	private final GPSTrackingGateway tracking;
+	private final LocationTracking tracking;
 
 	// The geo-coding instance
 	private final Geocoding geocoding;
 
 	// default constructor
-	public FuelCardMonitoring(GPSTrackingGateway tracking, Geocoding geocoding) {
+	public FuelCardMonitoring(LocationTracking tracking, Geocoding geocoding) {
 		this.tracking = tracking;
 		this.geocoding = geocoding;
 	}

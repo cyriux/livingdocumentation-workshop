@@ -1,5 +1,6 @@
 package flottio.fuelcardmonitoring.infra;
 
+import static flottio.annotations.ExternalActor.ActorType.SYSTEM;
 import flottio.annotations.ExternalActor;
 import flottio.annotations.ExternalActor.Direction;
 import flottio.annotations.GuidedTour;
@@ -14,7 +15,7 @@ import flottio.fuelcardmonitoring.legacy.VehicleDatastore;
  * Listens to incoming fuel card transactions from the external system of the
  * Fuel Card Provider
  */
-@ExternalActor(name = "Fuelo Card API", direction = Direction.API)
+@ExternalActor(name = "Fuelo Fuel Card Provider", type = SYSTEM, direction = Direction.API)
 @GuidedTour(name = "Quick Developer Tour", description = "The MQ listener which triggers a full chain of processing", rank = 1)
 public class FuelCardTxListener {
 

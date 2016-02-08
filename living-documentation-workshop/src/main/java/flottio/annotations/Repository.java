@@ -23,4 +23,6 @@ public @interface Repository {
 
 	@SuppressWarnings("rawtypes")
 	Class[] value() default {};
+
+	Codex rationale() default Codex.NO_CLUE;
 }

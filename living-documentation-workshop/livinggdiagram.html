@@ -17,10 +17,10 @@ subgraph cluster_c0 {
 label = "Core Domain";
 //Basket
 	c1 [label="Basket"]
-//GeoDistance
-	c10 [label="GeoDistance"]
 //Geocoding
-	c11 [label="Geocoding"]
+	c10 [label="Geocoding"]
+//LocationTracking
+	c11 [label="LocationTracking"]
 //Merchant
 	c12 [label="Merchant"]
 //Money
@@ -45,8 +45,8 @@ label = "Core Domain";
 	c7 [label="FuelEconomy"]
 //FueldCard
 	c8 [label="FueldCard"]
-//GPSTrackingGateway
-	c9 [label="GPSTrackingGateway"]
+//GeoDistance
+	c9 [label="GeoDistance"]
 }
 //FuelCardTxListener
 	c17 [label="FuelCardTxListener"]
@@ -79,7 +79,7 @@ label = "Core Domain";
 	// null
 	c7 -> c7 [arrowhead=open];
 	// null
-	c10 -> c10 [arrowhead=open];
+	c9 -> c9 [arrowhead=open];
 	// null
 	c13 -> c13 [arrowhead=open];
 	// null
@@ -87,13 +87,13 @@ label = "Core Domain";
 	// null
 	c6 -> c5 [arrowhead=open];
 	// null
-	c17 -> c18 [arrowhead=open];
+	c11 -> c20 [dir=back,arrowtail=empty,style=dashed];
 	// null
-	c4 -> c9 [arrowhead=open];
+	c17 -> c18 [arrowhead=open];
 	// null
 	c5 -> c8 [arrowhead=open];
 	// null
-	c11 -> c19 [dir=back,arrowtail=empty,style=dashed];
+	c10 -> c19 [dir=back,arrowtail=empty,style=dashed];
 	// null
 	c22 -> c18 [arrowhead=open];
 	// null
@@ -103,11 +103,11 @@ label = "Core Domain";
 	// null
 	c21 -> c4 [arrowhead=open];
 	// null
+	c4 -> c10 [arrowhead=open];
+	// null
 	c4 -> c11 [arrowhead=open];
 	// null
 	c7 -> c20 [arrowhead=open];
-	// null
-	c9 -> c20 [dir=back,arrowtail=empty,style=dashed];
 	// null
 	c5 -> c13 [arrowhead=open];
 	// null

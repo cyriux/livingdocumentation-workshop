@@ -1,14 +1,13 @@
-/**
- * 
- */
 package flottio.fuelcardmonitoring.domain;
 
+import flottio.annotations.CoreConcept;
 import flottio.annotations.ValueObject;
 
 /**
  * A fuel card with its type, id, holder name
  */
 @ValueObject
+@CoreConcept
 public class FueldCard {
 
 	private final String id;

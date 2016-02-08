@@ -14,23 +14,26 @@ digraph G {
 	edge [fontname="Verdana",fontsize=9,labelfontname="Verdana",labelfontsize=9];
 	node [fontname="Verdana",fontsize=9,shape=record];
 //the system under consideration
-	c0 [label="Fuel Card Monitoring
-\lfuelcard.png\n \<\<System\>\>"]
+	c0 [label="Fuel Card
+Monitoring \lSystem", color=grey,fontcolor=grey,fontname="Verdana",fontsize=9]
 //FuelCardTxListener
-	c1 [label="Fuelo Card API\n \<\<External\l Actor\>\>"]
+	c1 [label="Fuelo Fuel Card
+Provider", shape=box, style=filled,fillcolor="#C0D0C0"]
 //SmartGISGeoCodingAdapter
-	c2 [label="Google Geocoding\n \<\<External\l Actor\>\>"]
+	c2 [label="Google Geocoding
+Provider", shape=box, style=filled,fillcolor="#C0D0C0"]
 //WebServiceGPSTrackingAdapter
-	c3 [label="GPS Tracking from
-Garmin\n\l \<\<External Actor\>\>"]
+	c3 [label="Garmin GPS Tracking
+Gateway", shape=box, style=filled,fillcolor="#C0D0C0"]
 //package-info
 	c4 [label="Fleet Management
-Teams\n\l \<\<External Actor\>\>"]
+Teams", shape=box, style=filled,fillcolor="#C0D0C0"]
 //package-info
 	c5 [label="Legacy Vehicle
-Assignement\n\l \<\<External Actor\>\>"]
+Assignment\l System", shape=box, style=filled,fillcolor="#C0D0C0"]
 //package-info
-	c6 [label="Support & Monitoring\n\l \<\<External Actor\>\>"]
+	c6 [label="Support &
+Monitoring \lAgents", shape=box, style=filled,fillcolor="#C0D0C0"]
 	// null
 	c0 -> c2 [arrowhead=none,style=dashed];
 	// null

@@ -3,14 +3,16 @@
 
 # Fuel Card Integration
 
+Here are the main features of this module:
+
 ## Syncs daily
-Transaction data from the pump is automatically sent to Fleetio. No more manual entry of fuel receipts or downloading and importing fuel transactions across systems.
+Transaction data from the pump is automatically sent to Flottio. No more manual entry of fuel receipts or downloading and importing fuel transactions across systems.
 
 ## Fuel Card Transaction Monitoring
 Transaction data from the pump are verified automatically against various rules to detect potential frauds: gas leakage, transactions too far from the vehicle etc.
 
 ## Odometer readings
-When drivers enter mileage at the pump, Fleetio uses that information to trigger service reminders. This time-saving approach helps you stay on top of maintenance and keeps your vehicles performing their best.
+When drivers enter mileage at the pump, Flottio uses that information to trigger service reminders. This time-saving approach helps you stay on top of maintenance and keeps your vehicles performing their best.
 
 ## Smart fuel management
 MPG and cost-per-mile are automatically calculated. Analyze your fuel spend from all angles - by vehicle, location, vehicle type, time frame.

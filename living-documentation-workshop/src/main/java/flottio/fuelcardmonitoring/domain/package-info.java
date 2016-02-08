@@ -7,8 +7,10 @@
  */
 @BoundedContext(name = "Fuel Card Monitoring", links = "fuelcard.png")
 @HexagonalArchitecture.DomainModel(rationale = "Testability + Independence from the frameworks and technologies", alternatives = "DDD.Conformist")
+@FunctionalCoreImperativeShell
 package flottio.fuelcardmonitoring.domain;
 
 import flottio.annotations.BoundedContext;
+import flottio.annotations.FunctionalCoreImperativeShell;
 import flottio.annotations.hexagonalarchitecture.HexagonalArchitecture;
 

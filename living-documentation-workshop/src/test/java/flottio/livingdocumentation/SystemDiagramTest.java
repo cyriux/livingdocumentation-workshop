@@ -4,6 +4,7 @@ import static flottio.livingdocumentation.SimpleTemplate.evaluate;
 import static flottio.livingdocumentation.SimpleTemplate.readTestResource;
 import static flottio.livingdocumentation.SimpleTemplate.write;
 import static org.livingdocumentation.dotdiagram.DotStyles.NOTE_EDGE_STYLE;
+import static org.livingdocumentation.dotdiagram.DotStyles.STUB_NODE_OPTIONS;
 
 import java.io.File;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 import org.livingdocumentation.dotdiagram.DotGraph;
+import org.livingdocumentation.dotdiagram.DotStyles;
 import org.livingdocumentation.dotdiagram.DotGraph.Digraph;
 
 import com.google.common.collect.ImmutableSet;
@@ -24,6 +26,7 @@ import com.thoughtworks.qdox.model.JavaAnnotatedElement;
 
 import flottio.annotations.BoundedContext;
 import flottio.annotations.ExternalActor;
+import flottio.annotations.ExternalActor.ActorType;
 
 /**
  * Living Diagram of the system and its external actors generated out of the
@@ -60,10 +63,10 @@ public class SystemDiagramTest {
 
 		for (ClassInfo classInfo : inventory.keySet()) {
 			final BoundedContext bc = inventory.get(classInfo);
-			final String systemName = bc.name();
-			final String systemPicture = firstImageIn(bc.links());
-			digraph.addNode("system").setLabel(systemName + "\n" + systemPicture)
-					.setComment("the system under consideration").addStereotype("System");
+			final String systemName = bc.name().trim() + " System";
+			// final String systemPicture = firstImageIn(bc.links());
+			digraph.addNode("system").setLabel(wrap(systemName, 19)).setComment("the system under consideration")
+					.setOptions(STUB_NODE_OPTIONS);
 
 			final Stream<ClassInfo> infra = allClasses.stream().filter(notIn("domain"));
 			infra.forEach(new Consumer<ClassInfo>() {
@@ -110,10 +113,14 @@ public class SystemDiagramTest {
 	}
 
 	protected void printActor(Digraph digraph, ClassInfo ci, JavaProjectBuilder builder) {
+		// final String options =
+		// "shape=box, style=invis, shapefile=\"Turing.png\"";
+		final String options = "shape=box, style=filled,fillcolor=\"#C0D0C0\"";
+
 		final ExternalActor[] actors = ci.load().getAnnotationsByType(ExternalActor.class);
 		for (ExternalActor actor : actors) {
-			digraph.addNode(ci.getName()).setLabel(wrap(actor.name(), 20)).setComment(ci.getSimpleName())
-					.addStereotype("External Actor");
+			digraph.addNode(ci.getName()).setLabel(wrap(actor.name(), 19)).setComment(ci.getSimpleName())
+					.setOptions(options); // .addStereotype(actorType(actor.type()))
 
 			final String label = getComment(ci, builder);
 			switch (actor.direction()) {
@@ -127,6 +134,16 @@ public class SystemDiagramTest {
 				digraph.addAssociation("system", ci.getName()).setLabel(label).setOptions(NOTE_EDGE_STYLE);
 				digraph.addAssociation(ci.getName(), "system").setLabel(label).setOptions(NOTE_EDGE_STYLE);
 			}
+		}
+	}
+
+	private final static String actorType(ActorType type) {
+		switch (type) {
+		case PEOPLE:
+			return "External User";
+		case SYSTEM:
+		default:
+			return "External System";
 		}
 	}
 
