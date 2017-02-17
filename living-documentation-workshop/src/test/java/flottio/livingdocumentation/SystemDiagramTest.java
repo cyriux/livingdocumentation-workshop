@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 import org.livingdocumentation.dotdiagram.DotGraph;
-import org.livingdocumentation.dotdiagram.DotStyles;
 import org.livingdocumentation.dotdiagram.DotGraph.Digraph;
 
 import com.google.common.collect.ImmutableSet;
@@ -34,6 +33,9 @@ import flottio.annotations.ExternalActor.ActorType;
  */
 public class SystemDiagramTest {
 
+	private static final String SCM_BASE_URL = "https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop";
+	private static final String PACKAGE_PREFIX = "flottio.fuelcardmonitoring";
+	private static final String SOURCE_TREE = "src/main/java";
 	private final DotGraph graph = new DotGraph("", "LR");
 
 	@Test
@@ -42,15 +44,15 @@ public class SystemDiagramTest {
 
 		final JavaProjectBuilder builder = new JavaProjectBuilder();
 		// Adding all .java files in a source tree (recursively).
-		builder.addSourceTree(new File("src/main/java"));
+		builder.addSourceTree(new File(SOURCE_TREE));
 
-		final String prefix = "flottio.fuelcardmonitoring";
+		final String prefix = PACKAGE_PREFIX;
 		final ImmutableSet<ClassInfo> allClasses = classPath.getTopLevelClassesRecursive(prefix);
 
 		final Digraph digraph = graph.getDigraph();
 		digraph.setOptions("rankdir=LR");
 
-		final String domainPackageName = prefix + ".domain";
+		final String domainPackageName = prefix + "." + "domain";
 
 		final ImmutableSet<ClassInfo> domain = classPath.getTopLevelClasses(domainPackageName);
 		final Map<ClassInfo, BoundedContext> inventory = new HashMap<ClassPath.ClassInfo, BoundedContext>();
@@ -79,10 +81,10 @@ public class SystemDiagramTest {
 		// render into image
 		final String template = readTestResource("viz-template.html");
 
-		String title = "System Diagram";
+		String title = "Context Diagram";
 		final String content = graph.render().trim();
 		final String text = evaluate(template, title, content);
-		write("", "systemdiagram.html", text);
+		write("", "context-diagram.html", text);
 	}
 
 	private static String firstImageIn(String[] strings) {
@@ -115,7 +117,8 @@ public class SystemDiagramTest {
 	protected void printActor(Digraph digraph, ClassInfo ci, JavaProjectBuilder builder) {
 		// final String options =
 		// "shape=box, style=invis, shapefile=\"Turing.png\"";
-		final String options = "shape=box, style=filled,fillcolor=\"#C0D0C0\"";
+		final String url = ", URL=\"" + (SCM_BASE_URL + "/" + SOURCE_TREE + "/") + toPath(ci) + "\"";
+		final String options = "shape=box, style=filled,fillcolor=\"#C0D0C0\"" + url;
 
 		final ExternalActor[] actors = ci.load().getAnnotationsByType(ExternalActor.class);
 		for (ExternalActor actor : actors) {
@@ -137,6 +140,10 @@ public class SystemDiagramTest {
 		}
 	}
 
+	public String toPath(ClassInfo ci) {
+		return ci.getResourceName().replace(".class", ".java").replace("package-info.java", "");
+	}
+
 	private final static String actorType(ActorType type) {
 		switch (type) {
 		case PEOPLE:
@@ -148,8 +155,8 @@ public class SystemDiagramTest {
 	}
 
 	private String getComment(ClassInfo ci, JavaProjectBuilder builder) {
-		JavaAnnotatedElement doc = ci.getSimpleName().equals("package-info") ? builder.getPackageByName(ci
-				.getPackageName()) : builder.getClassByName(ci.getName());
+		JavaAnnotatedElement doc = ci.getSimpleName().equals("package-info")
+				? builder.getPackageByName(ci.getPackageName()) : builder.getClassByName(ci.getName());
 		final String label = doc.getComment() == null ? "" : wrap(doc.getComment(), 30);
 		return label;
 	}
