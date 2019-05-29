@@ -1,10 +1,3 @@
-
-<!DOCTYPE html>
-<html>
-<title>Living Glossary</title>
-
-
-<xmp theme="united" style="display:none;">
 # Glossary
 
 ## Preventative Maintenance
@@ -31,10 +24,3 @@ operations to be done by mileage, time periods, or combinations of both.
 ### VehicleMaintenanceJournal
 Represents the maintenance journal (aka log) of a particular vehicle. It records all
 maintenance operations already done, or planned in the near future.
-
-
-
-</xmp>
-
-<script src="lib/strapdown.js"></script>
-</html>

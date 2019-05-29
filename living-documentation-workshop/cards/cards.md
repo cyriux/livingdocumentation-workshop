@@ -1,51 +1,38 @@
-# Living Documentation Jumpstart Workshop
-*Cyrille Martraire (@cyriux) 2015*
+# Living Document Examples 
 
 
-## Evergreen Documents
-*Documents about stable knowledge need no maintenance*
-
-![An example of a living diagram image](../hexagonal-architecture.png)
-
-[An example of a living diagram page](../livinggdiagram.html)
-
-[Another example of a living diagram page](../systemdiagram.html)
-
-[A link to the generated guided tour page](../Quick_Developer_Tour.html)
-
-[A link to the generated word cloud page](../wordcloud.html)
+## Living Diagram for Hexagonal Architecture
 
 
+[Source code on Github](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/test/java/flottio/livingdocumentation/LivingDiagramTest.java)
 
-## Shameful Comments (Simplify & Fix weird stuff)
-*Comments where their very existence highlights issues in the code*
+![An example of a rendered living diagram (screenshot)](../hexagonal-architecture.png)
 
-- Open the class *FuelCardMonitoring* in the package *flottio.fuelcardmonitoring.domain*
-- Review its comments and find where you could improve the code in a way that would make some of the comments useless
-- Refactor to remove shameful comments 
-- Debrief
+## Living Diagram for System Diagram (Context Diagram)
 
-## How does your code tell the business domain?
-*And you were supposed to practice DDD?*
+[Source code on Github](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/test/java/flottio/livingdocumentation/SystemDiagramTest.java)
 
-- Extract a word cloud on the source folder "/src/main/java/flottio/dispatching" (run *WordCloudTest* in *flottio.livingdocumentation*)
-- Discuss the result
-- Run the word cloud again on the source folder "/src/main/java/flottio/fuelcardmonitoring" to compare
+![An example of a living system diagram (screenshot)](../systemdiagram.png)
+
+## Living Guided Tour
+
+[Source code on Github](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/test/java/flottio/livingdocumentation/LivingGuidedTourTest.java)
+
+[An example of a generated guided tour (Markdown)](../quick_developer_tour.md)
+
+## Living Glossary
+
+[Source code on Github](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/test/java/flottio/livingdocumentation/LivingGlossaryTest.java)
 
 
-## Make a Living Glossary
+[A very short example of a living glossary (Markdown)](../livingglossary.md)
 
-- Run the Living Glossary
-- Make changes to the code: rename, move class to infra, remove annotation, change comments...
-- Discuss 
+## Living Word Cloud
 
-*One Bounded Context is obviously legacy and cannot provide a nice living glossary: to exclude*
+[Source code on Github](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/test/java/flottio/livingdocumentation/WordCloudTest.java)
 
-## Does your code tell the design?
+and [its companion "parser"](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/test/java/flottio/livingdocumentation/WordCloud.java)
 
-- Run the provided living Diagram
-- Discuss the trouble with the diagram
 
-We want this diagram to show the Hexagonal Architecture design decision
-- Check the design against the Hexagonal Architecture pattern
-- Rename, add or delete classes and re-run the diagram
+![An example of a word cloud of the code (screenshot)](../wordcloud.png)
+

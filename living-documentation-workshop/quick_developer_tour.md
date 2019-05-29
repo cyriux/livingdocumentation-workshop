@@ -1,13 +1,3 @@
-
-<!DOCTYPE html>
-<html>
-<title>Quick Developer Tour</title>
-
-
-<xmp theme="united" style="display:none;">
-
-
-
 ## 1. [FuelCardTxListener](https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/FuelCardTxListener.java#L18)
 
 *The MQ listener which triggers a full chain of processing*
@@ -117,11 +107,3 @@ public flottio.fuelcardmonitoring.domain.FuelCardTransactionReport monitor(flott
 
 *The DAO to store the resulting fuel card reports after processing*
 
-
-
-
-
-</xmp>
-
-<script src="lib/strapdown.js"></script>
-</html>

@@ -3,7 +3,7 @@
 <html><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>System Diagram</title>
+    <title>Context Diagram</title>
   </head>
   <body>
     
@@ -18,24 +18,27 @@ digraph G {
 Monitoring \lSystem", color=grey,fontcolor=grey,fontname="Verdana",fontsize=9]
 //FuelCardTxListener
 	c1 [label="Fuelo Fuel Card
-Provider", shape=box, style=filled,fillcolor="#C0D0C0"]
+Provider", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/FuelCardTxListener.java"]
+//ReportDAO
+	c2 [label="Monitoring via DB
+polling", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/ReportDAO.java"]
 //SmartGISGeoCodingAdapter
-	c2 [label="Google Geocoding
-Provider", shape=box, style=filled,fillcolor="#C0D0C0"]
+	c3 [label="Google Geocoding
+Provider", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/SmartGISGeoCodingAdapter.java"]
 //WebServiceGPSTrackingAdapter
-	c3 [label="Garmin GPS Tracking
-Gateway", shape=box, style=filled,fillcolor="#C0D0C0"]
+	c4 [label="Garmin GPS Tracking
+Gateway", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/WebServiceGPSTrackingAdapter.java"]
 //package-info
-	c4 [label="Fleet Management
-Teams", shape=box, style=filled,fillcolor="#C0D0C0"]
+	c5 [label="Fleet Management
+Teams", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/infra/web/package-info.java"]
 //package-info
-	c5 [label="Legacy Vehicle
-Assignment\l System", shape=box, style=filled,fillcolor="#C0D0C0"]
+	c6 [label="Legacy Vehicle
+Assignment\l System", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/legacy/package-info.java"]
 //package-info
-	c6 [label="Support &
-Monitoring \lAgents", shape=box, style=filled,fillcolor="#C0D0C0"]
+	c7 [label="Support &
+Monitoring \lAgents", shape=box, style=filled,fillcolor="#C0D0C0", URL="https://github.com/cyriux/livingdocumentation-workshop/blob/master/living-documentation-workshop/src/main/java/flottio/fuelcardmonitoring/monitoring/package-info.java"]
 	// null
-	c0 -> c2 [arrowhead=none,style=dashed];
+	c2 -> c0 [arrowhead=none,style=dashed];
 	// null
 	c1 -> c0 [label="Listens to incoming fuel card
 transactions from the
@@ -43,13 +46,21 @@ external system of the
 Fuel
 Card Provider"  , arrowhead=none,style=dashed];
 	// null
-	c4 -> c0 [arrowhead=none,style=dashed];
+	c7 -> c0 [arrowhead=none,style=dashed];
+	// null
+	c0 -> c4 [arrowhead=none,style=dashed];
 	// null
 	c0 -> c3 [arrowhead=none,style=dashed];
 	// null
-	c6 -> c0 [arrowhead=none,style=dashed];
+	c0 -> c6 [label="Vehicle Management is a legacy
+system which manages which
+drivers is associated to a
+vehicle for a period of time
+."  , arrowhead=none,style=dashed];
 	// null
-	c0 -> c5 [arrowhead=none,style=dashed];
+	c5 -> c0 [label="The fleet management team
+investigates any anomaly
+about fuel cards"  , arrowhead=none,style=dashed];
 }
 	</script>
     <script src="lib/viz.js"></script>
@@ -76,7 +87,7 @@ Card Provider"  , arrowhead=none,style=dashed];
         }
       }
       
-      document.body.innerHTML += "<h1>System Diagram</h1>"
+      document.body.innerHTML += "<h1>Context Diagram</h1>"
       document.body.innerHTML += example("custom", "svg");
     </script>    
 </body></html>
